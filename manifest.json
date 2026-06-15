@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "FormVault AI",
+  "description": "Privacy-first AI form assistant. Store data locally, fill forms intelligently, zero cloud dependency.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "public/icons/icon-16.png",
+    "48": "public/icons/icon-48.png",
+    "128": "public/icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_title": "FormVault AI",
+    "default_icon": {
+      "16": "public/icons/icon-16.png",
+      "48": "public/icons/icon-48.png"
+    }
+  },
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content-script.tsx-loader-DV7GbLGP.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "src/content/content-script.css",
+        "assets/content-script-CxW_FE7m.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://127.0.0.1:11434/*",
+    "http://localhost:11434/*",
+    "https://cdn.jsdelivr.net/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "src/content/*",
+        "tesseract/*",
+        "assets/indexed-db-COcOGEyP.js",
+        "assets/lucide-alnqIF-r.js",
+        "assets/client-CSCaflYP.js",
+        "assets/field-matcher-CqIis0cS.js",
+        "assets/rolldown-runtime-CMxvf4Kt.js",
+        "assets/ocr-client-Cb363o5z.js",
+        "assets/content-script.tsx-DbnW1Qpo.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}
